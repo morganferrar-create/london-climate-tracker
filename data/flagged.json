@@ -1,0 +1,173 @@
+[
+  {
+    "id": "london-air-5",
+    "city": "London",
+    "category": "Air quality",
+    "title": "ULEZ scrappage scheme",
+    "summary": "TfL grant for scrapping or retrofitting a non-ULEZ-compliant vehicle.",
+    "details": [
+      "Closed to new applicants"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "Greater London Authority: Scrappage schemes",
+        "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/pollution-and-air-quality/scrappage-schemes"
+      },
+      {
+        "title": "Fleet Point: TfL ends ULEZ scrappage scheme",
+        "url": "https://www.fleetpoint.org/environment-news/ulez/transport-for-london-ends-ulez-scrappage-scheme/"
+      }
+    ],
+    "verification": {
+      "status": "flagged",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness",
+      "flag_reason": "Freshness: the scheme closed to new applicants on 7 September 2024, and the official GLA page returned a 403 so it could not be opened."
+    }
+  },
+  {
+    "id": "london-energy-5",
+    "city": "London",
+    "category": "Energy at home",
+    "title": "Warm Homes: Local Grant (London)",
+    "summary": "Free or discounted insulation, heating and solar for low-income private homeowners and renters in 31 London boroughs, run by the GLA with Sureserve.",
+    "details": [
+      "Enquiries: 020 3961 5210"
+    ],
+    "when": [
+      "any",
+      "cold-extreme"
+    ],
+    "sources": [
+      {
+        "title": "Warmer Homes London: Programmes",
+        "url": "https://www.warmer-homes.london/programmes"
+      },
+      {
+        "title": "Greater London Authority: Warm Homes: Local Grant",
+        "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/net-zero-energy/warmer-homes"
+      }
+    ],
+    "verification": {
+      "status": "flagged",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness",
+      "flag_reason": "Freshness: new applications are temporarily paused while current ones are assessed; the GLA page also returned a 403."
+    }
+  },
+  {
+    "id": "london-energy-6",
+    "city": "London",
+    "category": "Energy at home",
+    "title": "Great British Insulation Scheme",
+    "summary": "Free or cheaper insulation through energy suppliers.",
+    "details": [
+      "Installations had to be complete by 31 March 2026"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "GOV.UK: Apply for the Great British Insulation Scheme",
+        "url": "https://www.gov.uk/apply-great-british-insulation-scheme"
+      }
+    ],
+    "verification": {
+      "status": "flagged",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness",
+      "flag_reason": "Freshness: the government application service has closed and the scheme ended on 31 March 2026."
+    }
+  },
+  {
+    "id": "london-energy-7",
+    "city": "London",
+    "category": "Energy at home",
+    "title": "Solar Together London group-buy",
+    "summary": "GLA-backed group buying scheme for solar panels, batteries and EV chargers, run by iChoosr.",
+    "details": [
+      "Over 3,000 homes installed across five phases"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "Greater London Authority: Solar Together London",
+        "url": "https://www.london.gov.uk/programmes-and-strategies/environment-and-climate-change/energy/solar-together-london"
+      }
+    ],
+    "verification": {
+      "status": "flagged",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness",
+      "flag_reason": "Freshness: no open registration round is shown, and the scheme's London sign-up link now redirects to a generic Switch Together support page."
+    }
+  },
+  {
+    "id": "london-heat-1",
+    "city": "London",
+    "category": "Heat",
+    "title": "Find a free cool space near you on a hot day",
+    "summary": "The Mayor's Cool Spaces map lists libraries, community centres and other public places where anyone can rest and cool down during hot weather.",
+    "details": [
+      "Map is live 1 June to 30 September each year",
+      "Includes indoor air-conditioned spaces and outdoor spaces with shade, seating, water and toilets",
+      "Spaces are sorted into two tiers by the amenities they offer",
+      "Not a medical service – if someone is unwell from the heat, get medical help"
+    ],
+    "when": [
+      "heat-high",
+      "heat-extreme"
+    ],
+    "sources": [
+      {
+        "title": "Greater London Authority: Cool spaces",
+        "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/climate-change/climate-adaptation/cool-spaces"
+      },
+      {
+        "title": "Greater London Authority: Cool Spaces map",
+        "url": "https://apps.london.gov.uk/cool-spaces/"
+      }
+    ],
+    "verification": {
+      "status": "flagged",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness",
+      "flag_reason": "Freshness: the Cool Spaces map is seasonal and closes on 30 September 2026 – removed by editor choice; re-check next June."
+    }
+  },
+  {
+    "id": "london-water-5",
+    "city": "London",
+    "category": "Water and flooding",
+    "title": "Thames Water hosepipe ban: what you can and can't do",
+    "summary": "A hosepipe ban is in place for Thames Water customers during the dry spell. It lifts when river, groundwater and reservoir levels recover.",
+    "details": [
+      "No hosepipes, sprinklers or pressure washers for gardens, pools, cars or patios",
+      "Watering cans, water butts, buckets and reused household water are all fine",
+      "Exemptions include disability or medical needs and animal welfare",
+      "Page last updated 17 September 2026 – check before assuming it's still on"
+    ],
+    "when": [
+      "any",
+      "heat-high"
+    ],
+    "sources": [
+      {
+        "title": "Thames Water: Temporary hosepipe ban",
+        "url": "https://www.thameswater.co.uk/help/temporary-hosepipe-ban"
+      }
+    ],
+    "verification": {
+      "status": "flagged",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness",
+      "flag_reason": "Freshness: the hosepipe ban is temporary and lifts when conditions allow – removed by editor choice so the site doesn't show a stale restriction."
+    }
+  }
+]

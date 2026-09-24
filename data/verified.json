@@ -1,0 +1,724 @@
+[
+  {
+    "id": "london-heat-2",
+    "city": "London",
+    "category": "Heat",
+    "title": "How to cope in a heatwave",
+    "summary": "NHS advice for keeping yourself and others safe when temperatures climb.",
+    "details": [
+      "Stay in the shade, especially between 11am and 3pm",
+      "Drink cold fluids and go easy on alcohol and caffeine",
+      "Keep your home cool and use cool showers or water on skin",
+      "Check on anyone at higher risk – people 65+, young children, pregnant women, people with long-term conditions or living alone"
+    ],
+    "when": [
+      "heat-high"
+    ],
+    "sources": [
+      {
+        "title": "NHS: Heatwave – how to cope in hot weather",
+        "url": "https://www.nhs.uk/live-well/seasonal-health/heatwave-how-to-cope-in-hot-weather/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-heat-3",
+    "city": "London",
+    "category": "Heat",
+    "title": "Spot heat exhaustion and know when to call 999",
+    "summary": "NHS guidance on recognising heat exhaustion and heatstroke and what to do in the first 30 minutes.",
+    "details": [
+      "Signs of heat exhaustion include tiredness, dizziness, headache, nausea, heavy sweating and pale clammy skin",
+      "Move the person somewhere cool, remove excess clothing, give water, and cool their skin with water and a fan",
+      "They should improve within 30 minutes – stay with them",
+      "Call 999 if they're still unwell after 30 minutes or show heatstroke signs (hot skin without sweating, confusion, fast breathing, seizure, loss of consciousness)",
+      "For less urgent advice call NHS 111"
+    ],
+    "when": [
+      "heat-high",
+      "heat-extreme"
+    ],
+    "sources": [
+      {
+        "title": "NHS: Heat exhaustion and heatstroke",
+        "url": "https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-heat-4",
+    "city": "London",
+    "category": "Heat",
+    "title": "Get heat-health alerts for London",
+    "summary": "UKHSA issues colour-coded heat-health alerts by region. Check London's status or register to get alerts by email.",
+    "details": [
+      "Core alert season runs 1 June to 30 September, with extra alerts outside that if needed",
+      "Yellow and amber mean higher risk for vulnerable people and pressure on health services",
+      "Red means significant risk to life even for healthy people",
+      "Register for email alerts through the Weather-Health Alerting system on GOV.UK"
+    ],
+    "when": [
+      "any",
+      "heat-high",
+      "heat-extreme"
+    ],
+    "sources": [
+      {
+        "title": "UKHSA data dashboard: Heat-health alerts",
+        "url": "https://ukhsa-dashboard.data.gov.uk/weather-health-alerts/heat"
+      },
+      {
+        "title": "GOV.UK: Heat-Health Alerting system",
+        "url": "https://www.gov.uk/guidance/heat-health-alerting-system"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-heat-5",
+    "city": "London",
+    "category": "Heat",
+    "title": "Find free drinking water refills with the Refill app",
+    "summary": "The free Refill app maps public fountains and cafés that will top up your bottle for free.",
+    "details": [
+      "Free on the App Store and Google Play",
+      "The Mayor's Refill London scheme lists over 4,000 refill locations",
+      "Also shows cafés that give a discount for bringing your own cup"
+    ],
+    "when": [
+      "any",
+      "heat-high"
+    ],
+    "sources": [
+      {
+        "title": "Refill: Refill app",
+        "url": "https://www.refill.org.uk/"
+      },
+      {
+        "title": "Greater London Authority: Cool spaces (Refill London)",
+        "url": "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/climate-change/climate-adaptation/cool-spaces"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-air-1",
+    "city": "London",
+    "category": "Air quality",
+    "title": "Sign up for free airTEXT pollution alerts",
+    "summary": "airTEXT sends free alerts when air pollution is forecast to be moderate or higher, plus three-day forecasts for air quality, pollen, UV and temperature.",
+    "details": [
+      "Free alerts by email, text message or voicemail",
+      "Covers Greater London, Surrey and parts of Essex",
+      "Run by CERC with London councils and government partners"
+    ],
+    "when": [
+      "any",
+      "air-moderate",
+      "air-high"
+    ],
+    "sources": [
+      {
+        "title": "airTEXT: About",
+        "url": "https://www.airtext.info/about"
+      },
+      {
+        "title": "airTEXT: London forecast",
+        "url": "https://www.airtext.info/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-air-2",
+    "city": "London",
+    "category": "Air quality",
+    "title": "Check today's air pollution before you exercise",
+    "summary": "London Air (Imperial College) shows live pollution across the city; the government's Check Air Quality service gives a five-day forecast by postcode.",
+    "details": [
+      "London Air map combines readings from the last hour with modelling",
+      "Check Air Quality: enter a postcode for the local index and a 5-day forecast",
+      "Check Air Quality phone line: 03459 33 55 77 (Mon–Fri, 8:30am–5pm)"
+    ],
+    "when": [
+      "any",
+      "air-moderate"
+    ],
+    "sources": [
+      {
+        "title": "Imperial College London: London Air Quality Network",
+        "url": "https://www.londonair.org.uk/"
+      },
+      {
+        "title": "GOV.UK: Check air quality",
+        "url": "https://check-air-quality.service.gov.uk/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-air-3",
+    "city": "London",
+    "category": "Air quality",
+    "title": "What to do on a high-pollution day",
+    "summary": "Government advice for days when the air quality index hits high or very high (7–10).",
+    "details": [
+      "Try to reduce your exposure, especially if you have symptoms",
+      "Adults and children with lung or heart conditions, and older people, should adapt physically demanding outdoor activity",
+      "Follow your asthma or other action plan – ask your GP or nurse for one if you don't have it"
+    ],
+    "when": [
+      "air-high"
+    ],
+    "sources": [
+      {
+        "title": "GOV.UK Prepare: Poor air quality and pollution",
+        "url": "https://prepare.campaign.gov.uk/be-informed-about-hazards/air-pollution/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-air-4",
+    "city": "London",
+    "category": "Air quality",
+    "title": "Check the rules before lighting a wood burner",
+    "summary": "Most of London is a smoke control area. The London Wood Burning Project, run by 22 boroughs, explains what you can burn and where.",
+    "details": [
+      "In a smoke control area you can't let smoke come from your chimney unless you use an exempt appliance",
+      "Use only authorised fuels or those your appliance maker specifies",
+      "Fines are £175–£300 for emitting smoke or burning unauthorised fuel",
+      "Check whether you're in a smoke control area on Defra's map"
+    ],
+    "when": [
+      "any",
+      "air-moderate"
+    ],
+    "sources": [
+      {
+        "title": "London Wood Burning Project: FAQs",
+        "url": "https://woodburning.london/faq/"
+      },
+      {
+        "title": "Defra UK-AIR: Smoke control areas",
+        "url": "https://uk-air.defra.gov.uk/data/sca/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-energy-1",
+    "city": "London",
+    "category": "Energy at home",
+    "title": "Get £7,500 off a heat pump with the Boiler Upgrade Scheme",
+    "summary": "A government grant towards replacing a gas, oil or electric heating system with a heat pump or biomass boiler, in England and Wales.",
+    "details": [
+      "£7,500 towards an air source or ground source heat pump",
+      "£5,000 towards a biomass boiler",
+      "Your installer applies for the grant and takes it off your bill"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "GOV.UK: Apply for the Boiler Upgrade Scheme",
+        "url": "https://www.gov.uk/apply-boiler-upgrade-scheme"
+      },
+      {
+        "title": "GOV.UK: Boiler Upgrade Scheme – what you can get",
+        "url": "https://www.gov.uk/apply-boiler-upgrade-scheme/what-you-can-get"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-energy-2",
+    "city": "London",
+    "category": "Energy at home",
+    "title": "Get free advice on cutting your home energy bills",
+    "summary": "The government's free service gives tailored recommendations for your home, with estimated costs and bill savings, plus a phone advice line.",
+    "details": [
+      "Answer questions about your home online for a personalised list of improvements",
+      "Free advice line: 0800 098 7950 (Mon–Fri 8am–6pm, Sat 9am–12pm)",
+      "Also points you to grants you may qualify for"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "GOV.UK: Find ways to save energy in your home",
+        "url": "https://www.gov.uk/improve-energy-efficiency"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-energy-3",
+    "city": "London",
+    "category": "Energy at home",
+    "title": "Join the free Priority Services Register for power cuts",
+    "summary": "UK Power Networks gives extra help during power cuts and severe weather to households that need it. It's free.",
+    "details": [
+      "Open to households with someone who relies on medical equipment, is of pensionable age, has children under five, has a disability or long-term illness, among others",
+      "Gives a 24-hour priority number, power cut alerts, and welfare support like hot meals",
+      "Sign up online or call 0800 169 9970 (24 hours, free)"
+    ],
+    "when": [
+      "any",
+      "heat-extreme",
+      "cold-extreme",
+      "flood-risk"
+    ],
+    "sources": [
+      {
+        "title": "UK Power Networks: Priority Services Register",
+        "url": "https://www.ukpowernetworks.co.uk/power-cut/priority-services"
+      },
+      {
+        "title": "UK Power Networks: About the Priority Services Register",
+        "url": "https://www.ukpowernetworks.co.uk/power-cut/priority-services/about-the-priority-services-register"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-energy-4",
+    "city": "London",
+    "category": "Energy at home",
+    "title": "Get £150 off your electricity bill with the Warm Home Discount",
+    "summary": "A one-off £150 discount on your electricity bill for winter 2026 to 2027 if you get certain means-tested benefits. Your supplier applies it to your bill.",
+    "details": [
+      "£150 off your electricity bill, not paid as cash",
+      "Qualifying benefits include Universal Credit, Housing Benefit, income-related ESA and Pension Credit",
+      "You (or your partner) must have been getting them on 23 August 2026, with your name on the electricity bill",
+      "The scheme reopens in October 2026 – check your eligibility on GOV.UK"
+    ],
+    "when": [
+      "any",
+      "cold-extreme"
+    ],
+    "sources": [
+      {
+        "title": "GOV.UK: Warm Home Discount Scheme",
+        "url": "https://www.gov.uk/the-warm-home-discount-scheme"
+      },
+      {
+        "title": "GOV.UK: Warm Home Discount – if you live in England and Wales",
+        "url": "https://www.gov.uk/the-warm-home-discount-scheme/if-you-live-in-england-and-wales"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-water-1",
+    "city": "London",
+    "category": "Water and flooding",
+    "title": "Sign up for free flood warnings",
+    "summary": "The Environment Agency will call, text or email you when flooding from rivers, the sea or groundwater is expected near you.",
+    "details": [
+      "Free service for England",
+      "Doesn't cover surface water flooding from heavy rain",
+      "Register online or call Floodline on 0345 988 1188 (24 hours)"
+    ],
+    "when": [
+      "any",
+      "flood-risk"
+    ],
+    "sources": [
+      {
+        "title": "GOV.UK: Sign up for flood warnings",
+        "url": "https://www.gov.uk/sign-up-for-flood-warnings"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-water-2",
+    "city": "London",
+    "category": "Water and flooding",
+    "title": "Check current flood warnings and river levels",
+    "summary": "See live flood alerts and warnings for your area, a 5-day flood forecast, and river and rainfall levels.",
+    "details": [
+      "Search by town or postcode",
+      "5-day flood risk forecast from the Met Office and Environment Agency",
+      "Floodline: 0345 988 1188 (24 hours)"
+    ],
+    "when": [
+      "rain-heavy",
+      "flood-risk"
+    ],
+    "sources": [
+      {
+        "title": "GOV.UK: Check for flooding",
+        "url": "https://check-for-flooding.service.gov.uk/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-water-3",
+    "city": "London",
+    "category": "Water and flooding",
+    "title": "Check your home's long-term flood risk",
+    "summary": "Find out the long-term flood risk for your area and how climate change might increase it.",
+    "details": [
+      "Covers rivers and the sea, surface water, reservoirs and groundwater (where data exists)",
+      "Surface water risk is the one most relevant to heavy rain in London",
+      "Doesn't tell you if an individual property will flood"
+    ],
+    "when": [
+      "any",
+      "flood-risk"
+    ],
+    "sources": [
+      {
+        "title": "GOV.UK: Check your long term flood risk",
+        "url": "https://www.gov.uk/check-long-term-flood-risk"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-water-4",
+    "city": "London",
+    "category": "Water and flooding",
+    "title": "Report sewer flooding or a blocked sewer to Thames Water",
+    "summary": "If sewage is flooding your home, garden or street, or a public sewer is blocked, report it straight away.",
+    "details": [
+      "Call 0800 316 9800, report online or message on WhatsApp (24/7)",
+      "Thames Water aims to respond within 4 hours for flooding inside homes, 24 hours outside",
+      "Take photos before water levels drop and tell your insurer",
+      "Internal sewer flooding qualifies for automatic compensation; external claims within three months"
+    ],
+    "when": [
+      "rain-heavy",
+      "flood-risk"
+    ],
+    "sources": [
+      {
+        "title": "Thames Water: What to do during sewer flooding",
+        "url": "https://www.thameswater.co.uk/help/water-and-waste-help/sewer-flooding/what-to-do-during-sewer-flooding"
+      },
+      {
+        "title": "Thames Water: Blockages and blocked drains",
+        "url": "https://www.thameswater.co.uk/help/emergencies/blockages"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-transport-1",
+    "city": "London",
+    "category": "Getting around",
+    "title": "Hire a Santander Cycle from £2",
+    "summary": "London's docked bike hire. Pick up at any docking station and return to any other.",
+    "details": [
+      "£2 for 24 hours' access, with the first 30 minutes of each ride included",
+      "Each extra 30 minutes or less costs £2",
+      "Hire with the Santander Cycles app or a bank card at the docking station",
+      "Charges of up to £300 if a bike is damaged or not returned"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "TfL: Santander Cycles",
+        "url": "https://tfl.gov.uk/modes/cycling/santander-cycles"
+      },
+      {
+        "title": "TfL: Santander Cycles – what you pay",
+        "url": "https://tfl.gov.uk/modes/cycling/santander-cycles/what-you-pay"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-transport-2",
+    "city": "London",
+    "category": "Getting around",
+    "title": "Use the Hopper fare for unlimited bus hops in an hour",
+    "summary": "Pay-as-you-go bus and tram journeys made within an hour of touching in cost one fare.",
+    "details": [
+      "£1.75 for unlimited bus and tram journeys within one hour of first touching in",
+      "Applies automatically with the same card or device",
+      "Won't apply if your Oyster goes into a negative balance after the first journey"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "TfL: Bus and tram fares",
+        "url": "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-transport-3",
+    "city": "London",
+    "category": "Getting around",
+    "title": "Book free cycle training through your borough",
+    "summary": "London boroughs offer free cycle skills courses for adults, from first pedals to riding in traffic, plus Bikeability for children.",
+    "details": [
+      "One-to-one or group sessions",
+      "Book through your borough's cycling team via TfL",
+      "Children can do Bikeability at school, or search for a local course"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "TfL: Cycle skills",
+        "url": "https://tfl.gov.uk/modes/cycling/cycle-skills"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-transport-4",
+    "city": "London",
+    "category": "Getting around",
+    "title": "Check whether your vehicle pays the ULEZ charge",
+    "summary": "The Ultra Low Emission Zone covers all London boroughs. Older, more polluting vehicles pay a daily charge.",
+    "details": [
+      "£12.50 a day for non-compliant vehicles",
+      "Runs 24 hours a day, every day except Christmas Day",
+      "Covers all London boroughs, not the M25"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "TfL: Ultra Low Emission Zone",
+        "url": "https://tfl.gov.uk/modes/driving/ultra-low-emission-zone"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-waste-1",
+    "city": "London",
+    "category": "Waste and reuse",
+    "title": "Check what your borough recycles",
+    "summary": "London Recycles lets you look up recycling rules and local recycling banks for each London borough, plus an item search.",
+    "details": [
+      "Pick your borough to see what goes in which bin",
+      "Search any item to check if it can be recycled",
+      "Food recycling and waste-reduction tips included"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "London Recycles: Local recycling",
+        "url": "https://www.londonrecycles.co.uk/recycling-101/local-recycling"
+      },
+      {
+        "title": "London Recycles",
+        "url": "https://www.londonrecycles.co.uk/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-waste-2",
+    "city": "London",
+    "category": "Waste and reuse",
+    "title": "Recycle old electricals, batteries and vapes for free",
+    "summary": "Anything with a plug, battery or cable can be recycled for free. Never put batteries or vapes in the bin – they can start fires in bin lorries.",
+    "details": [
+      "Postcode search covers almost 30,000 UK drop-off points to fix, donate or recycle",
+      "Many shops take old electricals back for free",
+      "Run by Material Focus"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "Recycle Your Electricals (Material Focus)",
+        "url": "https://www.recycleyourelectricals.org.uk/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-waste-3",
+    "city": "London",
+    "category": "Waste and reuse",
+    "title": "Borrow instead of buying at a Library of Things",
+    "summary": "Rent drills, carpet cleaners, camping kit and more from self-service lockers on London high streets.",
+    "details": [
+      "Join, reserve online, collect from a locker, return it clean",
+      "22 locations, including the Barbican Library",
+      "Started in south London in 2014"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "Library of Things",
+        "url": "https://www.libraryofthings.co.uk/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-waste-4",
+    "city": "London",
+    "category": "Waste and reuse",
+    "title": "Get broken gadgets fixed at a free Restart Party",
+    "summary": "Volunteer fixers help you repair broken or slow electronics at free community events across London.",
+    "details": [
+      "Free to attend",
+      "Events run across London boroughs, including Hackney and Barking Fixing Factories",
+      "Find upcoming events on the Restart Project's site"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "The Restart Project",
+        "url": "https://therestartproject.org/"
+      },
+      {
+        "title": "The Restart Project: Restart Parties",
+        "url": "https://therestartproject.org/parties/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  },
+  {
+    "id": "london-waste-5",
+    "city": "London",
+    "category": "Waste and reuse",
+    "title": "Claim up to £70 towards reusable nappies",
+    "summary": "Families in 12 London boroughs can claim a voucher towards reusable nappies or a nappy laundry service.",
+    "details": [
+      "Voucher worth up to £70",
+      "Boroughs: Barnet, Bexley, Brent, Camden, Enfield, Hackney, Haringey, Islington, Lambeth, Kingston upon Thames, Waltham Forest, Westminster",
+      "Apply online and spend with registered suppliers"
+    ],
+    "when": [
+      "any"
+    ],
+    "sources": [
+      {
+        "title": "Real Nappies for London",
+        "url": "https://www.realnappiesforlondon.org.uk/"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "lastChecked": "2026-09-23",
+      "method": "schema+spot+freshness"
+    }
+  }
+]

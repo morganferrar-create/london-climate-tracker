@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* Colour tokens. Add new colours here rather than writing hex values in
+   components. The look is soft grey, hairline rules, off-white cards with
+   one cut corner, and a single orange accent used only for decoration. */
+:root {
+  --background: #e7e7e5; /* page: soft light grey */
+  --foreground: #1f1f22; /* main text: charcoal */
+  --surface: #f6f6f4; /* off-white cards and pills */
+  --muted: #6b6b70; /* small print */
+  --border: #d3d3cf; /* pill outlines */
+  --line: #cfcfcb; /* thin section rules */
+  --accent: #e4572e; /* orange accent: rules, selected tab, panel borders */
+  --tab-active: var(--accent); /* selected day tab */
+  --pill: #4a4a4a; /* dark grey "Live data" pill */
+  --panel: #dcdcd9; /* panel fill: a little darker than the page */
+
+  /* Level colours: keep these clearly different from each other. */
+  --level-good: #2f7d6e; /* teal green: sits better next to the orange */
+  --level-moderate: #c99a00;
+  --level-high: #a9533b; /* terracotta: clearly apart from the orange accent */
+  --level-extreme: #c62828;
+  --level-unknown: #9e9e9e;
+
+  /* Darker text shades of each level colour, for the outline tags. */
+  --level-good-text: color-mix(in srgb, var(--level-good) 70%, black);
+  --level-moderate-text: color-mix(in srgb, var(--level-moderate) 70%, black);
+  --level-high-text: color-mix(in srgb, var(--level-high) 70%, black);
+  --level-extreme-text: color-mix(in srgb, var(--level-extreme) 70%, black);
+  --level-unknown-text: color-mix(in srgb, var(--level-unknown) 70%, black);
+
+  /* Tints of each level colour (not used by the panels at the moment). */
+  --level-good-tint: color-mix(in srgb, var(--level-good) 15%, white);
+  --level-moderate-tint: color-mix(in srgb, var(--level-moderate) 15%, white);
+  --level-high-tint: color-mix(in srgb, var(--level-high) 15%, white);
+  --level-extreme-tint: color-mix(in srgb, var(--level-extreme) 15%, white);
+  --level-unknown-tint: color-mix(in srgb, var(--level-unknown) 15%, white);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-line: var(--line);
+  --color-tab-active: var(--tab-active);
+  --color-pill: var(--pill);
+  --color-panel: var(--panel);
+  --color-accent: var(--accent);
+  --color-level-good: var(--level-good);
+  --color-level-moderate: var(--level-moderate);
+  --color-level-high: var(--level-high);
+  --color-level-extreme: var(--level-extreme);
+  --color-level-unknown: var(--level-unknown);
+  --color-level-good-text: var(--level-good-text);
+  --color-level-moderate-text: var(--level-moderate-text);
+  --color-level-high-text: var(--level-high-text);
+  --color-level-extreme-text: var(--level-extreme-text);
+  --color-level-unknown-text: var(--level-unknown-text);
+  --color-level-good-tint: var(--level-good-tint);
+  --color-level-moderate-tint: var(--level-moderate-tint);
+  --color-level-high-tint: var(--level-high-tint);
+  --color-level-extreme-tint: var(--level-extreme-tint);
+  --color-level-unknown-tint: var(--level-unknown-tint);
+  --font-sans: var(--font-inter-tight);
+}
+
+/* Cards with the top-left corner cut off at an angle. The outer shape is
+   filled with the border colour; the inner one sits 1px inside it, which
+   leaves a 1px coloured border (same weight as the section rules) that
+   follows the cut. */
+@utility notch {
+  clip-path: polygon(44px 0, 100% 0, 100% 100%, 0 100%, 0 44px);
+}
+@utility notch-inner {
+  clip-path: polygon(43.4px 0, 100% 0, 100% 100%, 0 100%, 0 43.4px);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Never leave a single word alone on the last line of a paragraph (a
+   "runt" or "orphan"). Browsers that support `pretty` rebalance the lines;
+   for key sentences we also join the last two words (see noWidow). */
+p, li, dd, h1, h2, h3, summary {
+  text-wrap: pretty;
+}
