@@ -7,20 +7,21 @@
   --background: #e7e7e5; /* page: soft light grey */
   --foreground: #1f1f22; /* main text: charcoal */
   --surface: #f6f6f4; /* off-white cards and pills */
-  --muted: #6b6b70; /* small print */
+  --muted: #58585d; /* small print: dark enough for 4.5:1 contrast on the page and panels */
   --border: #d3d3cf; /* pill outlines */
+  --field-border: #80807b; /* search box outline: 3.2:1 against the page, so the box is easy to spot */
   --line: #cfcfcb; /* thin section rules */
-  --accent: #e4572e; /* orange accent: rules, selected tab, panel borders */
-  --tab-active: var(--accent); /* selected day tab */
+  --accent: #c94a22; /* the one orange: dark enough for white text (4.68:1) and for large text on the page (3.7:1) */
+  --tab-active: var(--accent); /* selected tab and category pill */
   --pill: #4a4a4a; /* dark grey "Live data" pill */
   --panel: #dcdcd9; /* panel fill: a little darker than the page */
 
   /* Level colours: keep these clearly different from each other. */
   --level-good: #2f7d6e; /* teal green: sits better next to the orange */
-  --level-moderate: #c99a00;
+  --level-moderate: #8a6a00; /* deep gold: white text passes at 5.07:1 */
   --level-high: #a9533b; /* terracotta: clearly apart from the orange accent */
   --level-extreme: #c62828;
-  --level-unknown: #9e9e9e;
+  --level-unknown: #6f6f6f; /* "Unavailable": white text passes at 5.0:1 */
 
   /* Darker text shades of each level colour, for the outline tags. */
   --level-good-text: color-mix(in srgb, var(--level-good) 70%, black);
@@ -43,6 +44,7 @@
   --color-surface: var(--surface);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-field-border: var(--field-border);
   --color-line: var(--line);
   --color-tab-active: var(--tab-active);
   --color-pill: var(--pill);

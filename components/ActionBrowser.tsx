@@ -38,7 +38,7 @@ export default function ActionBrowser({ actions, categories }: { actions: Action
             </button>
           ))}
         </div>
-        <label className="flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm lg:w-72">
+        <label className="flex items-center gap-2 rounded-full border border-field-border bg-surface px-4 py-1.5 text-sm focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-foreground lg:w-72">
           <span className="sr-only">Search actions</span>
           <span aria-hidden className="text-muted">⌕</span>
           <input

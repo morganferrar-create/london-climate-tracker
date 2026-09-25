@@ -65,7 +65,7 @@ export default function DayTabs({ days, children }: { days: DayTab[]; children: 
               }`}
             >
               <span className="text-base font-medium">{d.label}</span>
-              {d.date && <span className={`text-xs ${active ? "text-white/70" : "text-muted"}`}>{d.date}</span>}
+              {d.date && <span className={`text-xs ${active ? "text-white" : "text-muted"}`}>{d.date}</span>}
             </button>
           );
         })}
