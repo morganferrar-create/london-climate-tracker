@@ -176,7 +176,7 @@ function Stat({
 function WindowStat({ label, w }: { label: string; w: GridWindow }) {
   return (
     <Card level={w.level} label={label} footer={w.footer}>
-      <p className="pt-4 text-4xl font-medium tracking-tight tabular-nums sm:text-5xl">
+      <p className="whitespace-nowrap pt-4 text-4xl font-medium tracking-tight tabular-nums sm:text-5xl md:text-4xl xl:text-5xl">
         {w.from}–{w.to}
       </p>
       <p className="text-sm text-muted">
@@ -198,7 +198,7 @@ function Card({
         <div className="flex items-start justify-between gap-2 pl-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-muted">{label}</h3>
           {tag && (
-            <span className={`rounded-full px-4 py-1.5 text-right text-sm font-medium text-white ${LEVEL_BG[level]}`}>{tag}</span>
+            <span className={`shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium text-white ${LEVEL_BG[level]}`}>{tag}</span>
           )}
         </div>
         {children}

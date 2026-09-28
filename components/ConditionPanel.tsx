@@ -22,7 +22,7 @@ export default function ConditionPanel({ panel }: { panel: Panel }) {
           <h2 className="text-xs font-bold uppercase tracking-wider text-muted">
             {panel.label}
           </h2>
-          <span className={`rounded-full px-4 py-1.5 text-right text-sm font-medium text-white ${LEVEL_FILL[panel.level]}`}>{panel.headline}</span>
+          <span className={`shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium text-white ${LEVEL_FILL[panel.level]}`}>{panel.headline}</span>
         </div>
         <p className="flex items-baseline gap-2 pt-4">
           <span className="text-5xl font-medium tracking-tight tabular-nums sm:text-6xl">{panel.value}</span>
