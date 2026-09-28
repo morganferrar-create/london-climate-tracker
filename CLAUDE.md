@@ -15,12 +15,12 @@ This is a Terra Studio Build 2 project, built from scratch. The reference repo i
 ## Files (as they get built)
 - `data/city.json`: the city (London: name, lat/long, timezone).
 - `data/verified.json`: actions that passed all three checks. The only actions the site shows.
-- `data/flagged.json`: actions that failed a check, with a `flag_reason`. Shown on /how-its-checked, never as advice.
+- `data/flagged.json`: actions that failed a check, with a `flag_reason`. Shown on /about ("Worth keeping an eye on" or "Recently ended"), never as advice.
 - `lib/types.ts`: the data schema. Matches the reference repo and the research skill.
 - `lib/feeds.ts`: one function per live feed (weather incl. rain, air, flood). Each returns `null` on failure. No keys by default.
 - `lib/conditions.ts`: turns readings into levels (good/moderate/high/extreme) and conditions (`heat-high`, `air-high`, `flood-risk`...). Thresholds are documented there.
-- `app/page.tsx`: today's readings, matched actions, all actions, checks summary.
-- `app/how-its-checked/page.tsx`: the three checks, feed sources, flagged entries.
+- `app/page.tsx`: readings (yesterday/today/tomorrow), when to plug in, matched actions, all actions.
+- `app/about/page.tsx`: the About page: last-checked date, what the colours mean, the renewables explainer, sources, flagged entries. (/how-its-checked redirects here.)
 - `components/`: header, condition panel, action card, client-side action browser.
 
 ## Rules
@@ -48,6 +48,6 @@ The learner is new to this. Use plain words, and explain any technical term the 
 2. Live readings: London, three feeds, three panels (heat, air, rain and flood).
 3. Research the actions in Cowork (learner, outside Claude Code). Placeholder with 2–3 clearly fake actions if they want to keep going first.
 4. Show the actions: "What to do today" plus all actions with category filters and search.
-5. "How it's checked" page.
+5. "How it's checked" page (now called About).
 6. Make it yours: colours, type, layout.
 7. Ship it: build check, GitHub repo, Vercel deploy.

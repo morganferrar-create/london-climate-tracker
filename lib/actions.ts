@@ -21,18 +21,20 @@ export const lastChecked: string | null =
   verifiedActions.map((a) => a.verification.lastChecked).sort().at(-1) ?? null;
 
 /**
- * Splits actions for a day. `matched` are the ones tied to a condition that's
- * switched on (hot, poor air, heavy rain...). `always` is a short pick of
- * "any time" actions, one per category, so the section stays short.
+ * Picks the actions for a day, three in total so the section stays short.
+ * `matched` are tied to a condition that's switched on (hot, poor air, heavy
+ * rain...) and come first; `always` fills any remaining places with "any time"
+ * actions, one per category. Everything is still in the full list below.
  */
-export function actionsFor(active: Condition[], alwaysLimit = 6): { matched: Action[]; always: Action[] } {
+export function actionsFor(active: Condition[], total = 3): { matched: Action[]; always: Action[] } {
   const on = new Set<Condition>(active.filter((c) => c !== "any"));
-  const matched = verifiedActions.filter((a) => a.when.some((w) => on.has(w)));
-  const seen = new Set<string>();
+  const allMatched = verifiedActions.filter((a) => a.when.some((w) => on.has(w)));
+  const matched = allMatched.slice(0, total);
+  const seen = new Set<string>(matched.map((a) => a.category));
   const always: Action[] = [];
   for (const a of verifiedActions) {
-    if (always.length >= alwaysLimit) break;
-    if (!a.when.includes("any") || matched.includes(a) || seen.has(a.category)) continue;
+    if (matched.length + always.length >= total) break;
+    if (!a.when.includes("any") || allMatched.includes(a) || seen.has(a.category)) continue;
     seen.add(a.category);
     always.push(a);
   }

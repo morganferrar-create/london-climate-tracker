@@ -37,6 +37,8 @@ export interface WeatherReading {
   temperature: number; // °C, right now
   feelsLike: number; // °C, right now
   time: string; // YYYY-MM-DDTHH:MM in UTC
+  /** The same readings at this time yesterday, from the same model. */
+  yesterday: { temperature: number; feelsLike: number; time: string } | null;
   days: WeatherDay[]; // yesterday, today, tomorrow
 }
 
@@ -50,6 +52,8 @@ export interface AirReading {
   europeanAqi: number; // European Air Quality Index, right now
   pm25: number; // µg/m³, right now
   time: string; // YYYY-MM-DDTHH:MM in UTC
+  /** The same readings at this hour yesterday, from the same model. */
+  yesterday: { europeanAqi: number; pm25: number; time: string } | null;
   days: AirDay[]; // yesterday, today, tomorrow
 }
 
@@ -68,6 +72,7 @@ export async function fetchWeather(city: City): Promise<WeatherReading | null> {
     `https://api.open-meteo.com/v1/forecast` +
     `?latitude=${city.latitude}&longitude=${city.longitude}` +
     `&current=temperature_2m,apparent_temperature` +
+    `&minutely_15=temperature_2m,apparent_temperature` +
     `&daily=temperature_2m_max,apparent_temperature_max,apparent_temperature_min,precipitation_sum,precipitation_probability_max` +
     `${DAYS_PARAMS}&timezone=${encodeURIComponent(city.timezone)}`;
   try {
@@ -75,10 +80,20 @@ export async function fetchWeather(city: City): Promise<WeatherReading | null> {
     if (!res.ok) return null;
     const json = await res.json();
     const d = json.daily;
+    const offset = json.utc_offset_seconds;
+    // "Now" is on a 15-minute step, so find the same step yesterday.
+    const then = sameTimeYesterday(json.current.time);
+    const i = json.minutely_15?.time?.indexOf(then) ?? -1;
+    const tempThen = json.minutely_15?.temperature_2m?.[i];
+    const feelsThen = json.minutely_15?.apparent_temperature?.[i];
     return {
       temperature: json.current.temperature_2m,
       feelsLike: json.current.apparent_temperature,
-      time: toUtc(json.current.time, json.utc_offset_seconds),
+      time: toUtc(json.current.time, offset),
+      yesterday:
+        typeof tempThen === "number" && typeof feelsThen === "number"
+          ? { temperature: tempThen, feelsLike: feelsThen, time: toUtc(then, offset) }
+          : null,
       days: d.time.map((date: string, i: number) => ({
         date,
         tempMax: d.temperature_2m_max[i],
@@ -118,10 +133,20 @@ export async function fetchAir(city: City): Promise<AirReading | null> {
       byDate.set(date, day);
     });
 
+    // "Now" is on the hour, so find the same hour yesterday.
+    const then = sameTimeYesterday(json.current.time);
+    const i = json.hourly.time.indexOf(then);
+    const aqiThen = json.hourly.european_aqi[i];
+    const pmThen = json.hourly.pm2_5[i];
+
     return {
       europeanAqi: Math.round(json.current.european_aqi),
       pm25: json.current.pm2_5,
       time: toUtc(json.current.time, json.utc_offset_seconds),
+      yesterday:
+        typeof aqiThen === "number"
+          ? { europeanAqi: Math.round(aqiThen), pm25: typeof pmThen === "number" ? pmThen : 0, time: toUtc(then, json.utc_offset_seconds) }
+          : null,
       days: [...byDate.values()],
     };
   } catch {
@@ -156,10 +181,60 @@ export async function fetchFlood(): Promise<FloodReading | null> {
   }
 }
 
+// "2026-09-25T13:30" → "2026-09-24T13:30": the same clock time a day earlier,
+// in the city's local time, matching how Open-Meteo lists its times.
+function sameTimeYesterday(localTime: string): string {
+  const ms = Date.parse(`${localTime}Z`) - 24 * 3600 * 1000;
+  return new Date(ms).toISOString().slice(0, 16);
+}
+
 // Open-Meteo gives "current" times in the city's local time, plus the
 // offset from UTC in seconds. Shift back to UTC so every panel uses the
 // same clock. The daily totals still follow London's calendar day.
 function toUtc(localTime: string, offsetSeconds: number): string {
   const ms = Date.parse(`${localTime}Z`) - (offsetSeconds ?? 0) * 1000;
   return new Date(ms).toISOString().slice(0, 16);
+}
+
+// --- Electricity grid -----------------------------------------------------------
+// Carbon intensity forecast from NESO, Britain's electricity system operator.
+// Free, no key. Half-hour steps for the London region, with the mix of
+// sources (wind, solar, gas...). Covers Great Britain only.
+
+export const GRID_REGION = { id: 13, name: "London" };
+
+export interface GridSlot {
+  from: string; // start of the half-hour, UTC ISO ("2026-09-25T12:30Z")
+  intensity: number; // grams of CO₂ per kWh
+  index: string; // NESO's band: "very low", "low", "moderate", "high", "very high"
+  renewables: number; // % from wind, solar, hydro and biomass
+}
+
+const RENEWABLE_FUELS = new Set(["wind", "solar", "hydro", "biomass"]);
+
+/** Half-hours from the start of yesterday to the end of tomorrow (with a little spare either side). */
+export async function fetchGrid(): Promise<GridSlot[] | null> {
+  const day = 24 * 3600 * 1000;
+  const start = new Date(Date.now() - 2 * day).toISOString().slice(0, 10);
+  const end = new Date(Date.now() + 2 * day).toISOString().slice(0, 10);
+  const url =
+    `https://api.carbonintensity.org.uk/regional/intensity/` +
+    `${start}T12:00Z/${end}T12:00Z/regionid/${GRID_REGION.id}`;
+  try {
+    const res = await fetch(url, { next: { revalidate: HOUR / 2 } });
+    if (!res.ok) return null;
+    const json = await res.json();
+    // The region's data sits at data.data (sometimes wrapped in a list).
+    const region = Array.isArray(json.data) ? json.data[0] : json.data;
+    const rows: unknown[] = region?.data ?? [];
+    const slots = rows.flatMap((r) => {
+      const row = r as { from: string; intensity?: { forecast?: number; index?: string }; generationmix?: { fuel: string; perc: number }[] };
+      if (typeof row.intensity?.forecast !== "number") return [];
+      const renewables = (row.generationmix ?? []).filter((m) => RENEWABLE_FUELS.has(m.fuel)).reduce((sum, m) => sum + m.perc, 0);
+      return [{ from: row.from, intensity: row.intensity.forecast, index: row.intensity.index ?? "", renewables }];
+    });
+    return slots.length ? slots : null;
+  } catch {
+    return null;
+  }
 }

@@ -4,8 +4,15 @@
 import { CONDITION_LABELS, formatDate, noWidow } from "@/lib/labels";
 import type { Action } from "@/lib/types";
 
-export default function ActionCard({ action, open = false }: { action: Action; open?: boolean }) {
+export default function ActionCard({ action }: { action: Action }) {
   const tags = action.when.filter((w) => w !== "any");
+  const steps = (
+    <ul className="mt-2 list-disc space-y-1.5 pl-5 marker:text-accent">
+      {action.details.map((d) => (
+        <li key={d}>{noWidow(d)}</li>
+      ))}
+    </ul>
+  );
   return (
     <article className="notch flex flex-col rounded-2xl bg-accent p-px">
       <div className="notch-inner flex flex-1 flex-col gap-3 rounded-[15px] bg-surface p-6">
@@ -13,20 +20,13 @@ export default function ActionCard({ action, open = false }: { action: Action; o
         <h3 className="text-xl font-medium leading-snug tracking-tight">{action.title}</h3>
         <p className="text-sm text-muted">{noWidow(action.summary)}</p>
 
-        <details open={open} className="group text-sm">
+        <details className="group text-sm">
           <summary className="cursor-pointer list-none font-medium text-foreground marker:hidden">
-            <span className="text-accent group-open:hidden">+ </span>
-            <span className="hidden text-accent group-open:inline">– </span>
-            {open ? "What to do" : "Show what to do"}
+            <span aria-hidden className="text-accent group-open:hidden">+ </span>
+            <span aria-hidden className="hidden text-accent group-open:inline">– </span>
+            Show what to do
           </summary>
-          <ul className="mt-2 space-y-1.5">
-            {action.details.map((d) => (
-              <li key={d} className="flex gap-2">
-                <span aria-hidden className="text-muted">—</span>
-                <span>{noWidow(d)}</span>
-              </li>
-            ))}
-          </ul>
+          {steps}
         </details>
 
         <div className="mt-auto flex flex-col gap-3 border-t border-foreground/10 pt-3">

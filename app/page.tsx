@@ -5,10 +5,11 @@ import DayTabs, { type DayTab, type WhatToDo } from "@/components/DayTabs";
 import SectionRule from "@/components/SectionRule";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import { actionsFor, categories, flaggedActions, verifiedActions } from "@/lib/actions";
+import { actionsFor, categories, lastChecked, verifiedActions } from "@/lib/actions";
 import { activeConditions, airPanel, heatPanel, rainPanel, type Panel } from "@/lib/conditions";
-import { DAY_INDEX, fetchAir, fetchFlood, fetchWeather, type DayKey } from "@/lib/feeds";
-import { CONDITION_PHRASES, formatDate, listOf, noWidow } from "@/lib/labels";
+import { DAY_INDEX, fetchAir, fetchFlood, fetchGrid, fetchWeather, type DayKey } from "@/lib/feeds";
+import { gridDay } from "@/lib/grid";
+import { CONDITION_PHRASES, clockTime, formatDate, listOf, localDate, noWidow, zoneName } from "@/lib/labels";
 import type { City } from "@/lib/types";
 
 const DAY_LABELS: Record<DayKey, string> = { yesterday: "Yesterday", today: "Today", tomorrow: "Tomorrow" };
@@ -16,9 +17,9 @@ const DAY_LABELS: Record<DayKey, string> = { yesterday: "Yesterday", today: "Tod
 // The sentence beside the page title changes with the selected day.
 function tagline(day: DayKey, cityName: string): string {
   return {
-    yesterday: `What the heat, the air and the rain were doing in ${cityName} yesterday.`,
-    today: `What the heat, the air and the rain are doing in ${cityName} right now, and what you can do to prepare.`,
-    tomorrow: `What the heat, the air and the rain are doing in ${cityName} tomorrow, and what you can do to prepare.`,
+    yesterday: `What the heat, the air and the rain were doing in ${cityName} yesterday, and how clean the grid's electricity was.`,
+    today: `What the heat, the air and the rain are doing in ${cityName} right now, when the grid's electricity is cleanest, and what you can do to prepare.`,
+    tomorrow: `What the heat, the air and the rain are doing in ${cityName} tomorrow, when to plug in for the cleanest electricity, and what you can do to prepare.`,
   }[day];
 }
 
@@ -47,23 +48,50 @@ function whatToDo(day: DayKey, panelsByDay: Record<DayKey, Panel[]>): WhatToDo {
       .map((c) => CONDITION_PHRASES[c]),
   );
   const when = basis === "tomorrow" ? "tomorrow" : "today";
-  const source = basis === "tomorrow" ? "Tomorrow's forecast shows" : "Today's readings show";
-  let intro = matched.length
-    ? `${source} ${phrases}, so these come first.`
-    : `Nothing unusual ${when === "today" ? "today" : "is forecast for tomorrow"}: no heat, air or rain warnings. Here are a few things worth doing any time.`;
-  if (day === "yesterday") intro = `Yesterday has passed, so these are for today. ${intro}`;
-  return { heading: "What can I do to prepare?", intro: noWidow(intro), matched, always };
+  return {
+    heading: "What can I do to prepare?",
+    // Short labels instead of a sentence: one above the matched actions (none
+    // on a calm day), and one above the "any time" actions.
+    alwaysLabel: day === "yesterday" ? "Always worth doing (even though yesterday has passed)" : "Always worth doing",
+    matchedLabel: matched.length ? `Because of ${phrases} ${when}` : null,
+    matched,
+    always,
+  };
+}
+
+// The time line at the bottom of each panel, on the city's clock:
+// "Reading taken 13:30 BST on 25 Sept".
+function timeLabel(p: Panel, timeZone: string): string {
+  if (!p.observedAt) return "No reading available";
+  if (p.observedAt.includes("T")) {
+    const date = formatDate(localDate(p.observedAt, timeZone));
+    return `Reading taken ${clockTime(p.observedAt, timeZone)} ${zoneName(p.observedAt, timeZone)} on ${date}`;
+  }
+  const date = formatDate(p.observedAt);
+  return { day: `Whole day, ${date}`, forecast: `Forecast for ${date}`, reading: `River reading for ${date}` }[p.timing];
 }
 
 export default async function Home() {
   const c = city as City;
   // Ask all three feeds at once rather than one after another.
-  const [weather, air, flood] = await Promise.all([fetchWeather(c), fetchAir(c), fetchFlood()]);
+  const [weather, air, flood, grid] = await Promise.all([fetchWeather(c), fetchAir(c), fetchFlood(), fetchGrid()]);
 
   const keys = Object.keys(DAY_INDEX) as DayKey[];
   const panelsByDay = Object.fromEntries(
-    keys.map((key) => [key, [heatPanel(weather, key), airPanel(air, key), rainPanel(weather, flood, key)]]),
+    keys.map((key) => [
+      key,
+      [heatPanel(weather, key), airPanel(air, key), rainPanel(weather, flood, key)].map((p) => ({ ...p, timeLabel: timeLabel(p, c.timezone) })),
+    ]),
   ) as Record<DayKey, Panel[]>;
+
+  // The city's calendar dates for each tab, used to pick the grid's half-hours.
+  const now = new Date();
+  const dayMs = 24 * 3600 * 1000;
+  const dates: Record<DayKey, string> = {
+    yesterday: localDate(new Date(now.getTime() - dayMs).toISOString(), c.timezone),
+    today: localDate(now.toISOString(), c.timezone),
+    tomorrow: localDate(new Date(now.getTime() + dayMs).toISOString(), c.timezone),
+  };
 
   const days: DayTab[] = keys.map((key) => ({
     key,
@@ -73,6 +101,7 @@ export default async function Home() {
     date: formatDate(weather?.days[DAY_INDEX[key]]?.date ?? flood?.days[DAY_INDEX[key]]?.date),
     panels: panelsByDay[key],
     todo: whatToDo(key, panelsByDay),
+    grid: gridDay(grid, key, dates, now, c.timezone),
   }));
 
   return (
@@ -93,9 +122,9 @@ export default async function Home() {
             All actions<span className="text-accent">.</span>
           </h2>
           <p className="text-sm text-muted">
-            {verifiedActions.length} passed all three checks · {flaggedActions.length} flagged ·{" "}
-            <Link href="/how-its-checked" className="text-foreground underline underline-offset-4 hover:text-accent">
-              How it&apos;s checked
+            Every action checked against its official page · Last checked {formatDate(lastChecked, true)} ·{" "}
+            <Link href="/about" className="text-foreground underline underline-offset-4 hover:text-accent">
+              About
             </Link>
           </p>
         </div>
