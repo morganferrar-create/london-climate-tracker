@@ -83,7 +83,7 @@ export default function About() {
   const ended = flaggedActions.filter((a) => statusOf(a) === null);
 
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-8">
+    <main className="mx-auto w-full max-w-6xl px-6 py-6 sm:px-8">
       <SiteHeader city={c} current="about" />
 
       <div className="flex flex-col gap-6 pb-12 pt-12 sm:pt-20 lg:flex-row lg:items-end lg:justify-between">

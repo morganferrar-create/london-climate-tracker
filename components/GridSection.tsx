@@ -95,7 +95,7 @@ export default function GridSection({
           </div>
 
           <figure className="notch mt-6 flex rounded-2xl bg-accent p-px">
-            <div className="notch-inner flex-1 rounded-[15px] bg-surface p-6 pl-10">
+            <div className="notch-inner flex-1 rounded-[15px] bg-surface p-5 pl-8 sm:p-6 sm:pl-10">
             {/* Labels over each longer stretch of same-coloured bars. Only on
                 wider screens, where a three-hour stretch has room for its label. */}
             <div aria-hidden className="relative mb-2 hidden h-7 lg:block">
@@ -165,7 +165,7 @@ function Stat({
   return (
     <Card level={level} label={label} tag={tag} footer={footer}>
       <p className="flex items-baseline gap-2 pt-4">
-        <span className="text-6xl font-medium tracking-tight tabular-nums">{value}</span>
+        <span className="text-5xl font-medium tracking-tight tabular-nums sm:text-6xl">{value}</span>
         <span className="text-sm text-muted">{unit}</span>
       </p>
       <p className="text-sm text-muted">{note}</p>
@@ -176,7 +176,7 @@ function Stat({
 function WindowStat({ label, w }: { label: string; w: GridWindow }) {
   return (
     <Card level={w.level} label={label} footer={w.footer}>
-      <p className="pt-4 text-5xl font-medium tracking-tight tabular-nums">
+      <p className="pt-4 text-4xl font-medium tracking-tight tabular-nums sm:text-5xl">
         {w.from}–{w.to}
       </p>
       <p className="text-sm text-muted">
@@ -194,7 +194,7 @@ function Card({
 }: { level: Level; label: string; tag?: string; footer: string; children: ReactNode }) {
   return (
     <div className={`notch flex flex-col rounded-2xl p-px md:min-h-[18.5rem] ${LEVEL_BG[level]}`}>
-      <div className="notch-inner flex flex-1 flex-col gap-4 rounded-[15px] bg-panel p-6">
+      <div className="notch-inner flex flex-1 flex-col gap-4 rounded-[15px] bg-panel p-5 sm:p-6">
         <div className="flex items-start justify-between gap-2 pl-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-muted">{label}</h3>
           {tag && (

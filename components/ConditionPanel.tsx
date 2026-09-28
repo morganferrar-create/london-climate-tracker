@@ -17,7 +17,7 @@ const LEVEL_FILL: Record<Level, string> = {
 export default function ConditionPanel({ panel }: { panel: Panel }) {
   return (
     <section className={`notch flex flex-col rounded-2xl p-px md:min-h-[18.5rem] ${LEVEL_FILL[panel.level]}`}>
-      <div className="notch-inner flex flex-1 flex-col gap-4 rounded-[15px] bg-panel p-6">
+      <div className="notch-inner flex flex-1 flex-col gap-4 rounded-[15px] bg-panel p-5 sm:p-6">
         <div className="flex items-start justify-between gap-2 pl-4">
           <h2 className="text-xs font-bold uppercase tracking-wider text-muted">
             {panel.label}
@@ -25,7 +25,7 @@ export default function ConditionPanel({ panel }: { panel: Panel }) {
           <span className={`rounded-full px-4 py-1.5 text-right text-sm font-medium text-white ${LEVEL_FILL[panel.level]}`}>{panel.headline}</span>
         </div>
         <p className="flex items-baseline gap-2 pt-4">
-          <span className="text-6xl font-medium tracking-tight tabular-nums">{panel.value}</span>
+          <span className="text-5xl font-medium tracking-tight tabular-nums sm:text-6xl">{panel.value}</span>
           <span className="text-sm text-muted">{panel.unit}</span>
         </p>
         <p className="whitespace-pre-line text-sm text-muted">{panel.detail.split("\n").map(noWidow).join("\n")}</p>

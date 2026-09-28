@@ -15,7 +15,7 @@ export default function ActionCard({ action }: { action: Action }) {
   );
   return (
     <article className="notch flex flex-col rounded-2xl bg-accent p-px">
-      <div className="notch-inner flex flex-1 flex-col gap-3 rounded-[15px] bg-surface p-6">
+      <div className="notch-inner flex flex-1 flex-col gap-3 rounded-[15px] bg-surface p-5 sm:p-6">
         <p className="pl-4 text-xs font-bold uppercase tracking-wider text-muted">{action.category}</p>
         <h3 className="text-xl font-medium leading-snug tracking-tight">{action.title}</h3>
         <p className="text-sm text-muted">{noWidow(action.summary)}</p>
