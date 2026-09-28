@@ -87,7 +87,7 @@ export default function About() {
       <SiteHeader city={c} current="about" />
 
       <div className="flex flex-col gap-6 pb-12 pt-12 sm:pt-20 lg:flex-row lg:items-end lg:justify-between">
-        <h1 className="text-5xl font-medium leading-[0.95] tracking-[-0.04em] sm:text-7xl lg:text-8xl">
+        <h1 className="text-[4rem] font-medium leading-[0.95] tracking-[-0.04em] sm:text-7xl lg:text-8xl">
           About<span className="text-accent">.</span>
         </h1>
         <p className="max-w-sm text-sm leading-snug text-muted lg:pb-3">

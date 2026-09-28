@@ -109,7 +109,7 @@ export default async function Home() {
       <SiteHeader city={c} current="home" />
 
       <DayTabs days={days}>
-        <h1 className="text-5xl font-medium leading-[0.95] tracking-[-0.04em] sm:text-7xl lg:text-8xl">
+        <h1 className="text-[4rem] font-medium leading-[0.95] tracking-[-0.04em] sm:text-7xl lg:text-8xl">
           Hi there,<br />
           {c.name}<span className="text-accent">.</span>
         </h1>
