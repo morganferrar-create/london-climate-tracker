@@ -131,13 +131,13 @@ function DayButtons({
               ? { role: "tab", id: `tab-${d.key}`, "aria-selected": active, "aria-controls": "day-panels" }
               : { "aria-pressed": active })}
             onClick={() => onSelect(d.key)}
-            className={`flex flex-col rounded-2xl border px-4 py-2 text-left transition-colors sm:flex-row sm:items-baseline sm:gap-2 sm:rounded-full sm:px-5 ${
+            className={`flex flex-col rounded-2xl border px-4 py-2 text-left transition-colors max-[359px]:px-2 sm:flex-row sm:items-baseline sm:gap-2 sm:rounded-full sm:px-5 ${
               active
                 ? "border-tab-active bg-tab-active text-white"
                 : "border-border bg-surface text-foreground hover:border-muted"
             }`}
           >
-            <span className="text-base font-medium">{d.label}</span>
+            <span className="text-base font-medium max-[359px]:text-sm">{d.label}</span>
             {d.date && <span className={`text-xs ${active ? "text-white" : "text-muted"}`}>{d.date}</span>}
           </button>
         );

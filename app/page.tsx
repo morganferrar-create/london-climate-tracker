@@ -105,11 +105,11 @@ export default async function Home() {
   }));
 
   return (
-    <main className="mx-auto w-full max-w-6xl px-6 py-6 sm:px-8">
+    <main className="mx-auto w-full max-w-6xl px-8 py-6">
       <SiteHeader city={c} current="home" />
 
       <DayTabs days={days}>
-        <h1 className="text-[4rem] font-medium leading-[0.95] tracking-[-0.04em] sm:text-7xl lg:text-8xl">
+        <h1 className="text-[min(5.5rem,18vw)] font-medium leading-[0.95] tracking-[-0.04em] sm:text-[5.5rem] lg:text-8xl">
           Hi there,<br />
           {c.name}<span className="text-accent">.</span>
         </h1>
