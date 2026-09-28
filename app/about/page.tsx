@@ -204,7 +204,7 @@ export default function About() {
         {watch.length === 0 ? (
           <p className="text-sm text-muted">Nothing on hold right now.</p>
         ) : (
-          <div className="grid gap-3 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {watch.map((a) => (
               <article key={a.id} className="flex flex-col gap-2 rounded-2xl border border-line bg-surface p-6">
                 <div className="flex items-start justify-between gap-3">

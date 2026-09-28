@@ -60,7 +60,7 @@ export default function ActionBrowser({ actions, categories }: { actions: Action
           No actions match. Try another word or pick All.
         </p>
       ) : (
-        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {shown.map((a) => (
             <ActionCard key={a.id} action={a} />
           ))}

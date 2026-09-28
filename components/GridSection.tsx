@@ -69,7 +69,7 @@ export default function GridSection({
         <>
           <p className="text-xs font-bold uppercase tracking-wider text-muted">{grid.intro}</p>
 
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="mt-4 grid gap-6 md:grid-cols-3">
             {grid.now ? (
               <Stat
                 label={`Right now, ${grid.now.time}`}
@@ -193,7 +193,7 @@ function Card({
   level, label, tag, footer, children,
 }: { level: Level; label: string; tag?: string; footer: string; children: ReactNode }) {
   return (
-    <div className={`notch flex flex-col rounded-2xl p-px md:min-h-[18.5rem] ${LEVEL_BG[level]}`}>
+    <div className={`notch flex aspect-[6/5] min-w-0 flex-col rounded-2xl p-px md:aspect-auto md:min-h-[18.5rem] ${LEVEL_BG[level]}`}>
       <div className="notch-inner flex flex-1 flex-col gap-4 rounded-[15px] bg-panel p-5 sm:p-6">
         <div className="flex items-start justify-between gap-2 pl-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-muted">{label}</h3>

@@ -16,7 +16,7 @@ const LEVEL_FILL: Record<Level, string> = {
 
 export default function ConditionPanel({ panel }: { panel: Panel }) {
   return (
-    <section className={`notch flex flex-col rounded-2xl p-px md:min-h-[18.5rem] ${LEVEL_FILL[panel.level]}`}>
+    <section className={`notch flex aspect-[6/5] min-w-0 flex-col rounded-2xl p-px md:aspect-auto md:min-h-[18.5rem] ${LEVEL_FILL[panel.level]}`}>
       <div className="notch-inner flex flex-1 flex-col gap-4 rounded-[15px] bg-panel p-5 sm:p-6">
         <div className="flex items-start justify-between gap-2 pl-4">
           <h2 className="text-xs font-bold uppercase tracking-wider text-muted">

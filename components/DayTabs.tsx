@@ -53,7 +53,7 @@ export default function DayTabs({ days, children }: { days: DayTab[]; children: 
 
       <DayButtons days={days} selected={selected} onSelect={setSelected} asTabs />
 
-      <div id="day-panels" role="tabpanel" aria-labelledby={`tab-${current.key}`} className="grid gap-3 md:grid-cols-3">
+      <div id="day-panels" role="tabpanel" aria-labelledby={`tab-${current.key}`} className="grid gap-6 md:grid-cols-3">
         {current.panels.map((p) => (
           <ConditionPanel key={p.key} panel={p} />
         ))}
@@ -77,7 +77,7 @@ export default function DayTabs({ days, children }: { days: DayTab[]; children: 
         {current.todo.matchedLabel && current.todo.matched.length > 0 && (
           <>
             <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-muted">{current.todo.matchedLabel}</h3>
-            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {current.todo.matched.map((a) => (
                 <ActionCard key={a.id} action={a} />
               ))}
@@ -90,7 +90,7 @@ export default function DayTabs({ days, children }: { days: DayTab[]; children: 
             <h3 className={`mb-4 text-xs font-bold uppercase tracking-wider text-muted ${current.todo.matched.length ? "mt-10" : ""}`}>
               {current.todo.alwaysLabel}
             </h3>
-            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {current.todo.always.map((a) => (
                 <ActionCard key={a.id} action={a} />
               ))}
