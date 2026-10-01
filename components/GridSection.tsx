@@ -130,7 +130,10 @@ export default function GridSection({
               ))}
             </div>
             <figcaption className="mt-4 text-xs text-muted">
-              <p>Grams of CO₂ per kWh, every half hour ({grid.zone})</p>
+              <p>
+                Each bar represents half an hour. Shorter bars mean cleaner electricity, usually because there&apos;s more
+                renewable energy on the grid, making it a better time to use electricity.
+              </p>
               {/* Colour key: two by two on phones, in a row on wider screens. */}
               <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 sm:flex sm:flex-wrap">
                 <Key level="good" text="Great time" />
