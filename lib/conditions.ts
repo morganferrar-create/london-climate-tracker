@@ -150,7 +150,7 @@ export function rainPanel(w: WeatherReading | null, day: DayKey): Panel {
     level = "moderate"; headline = isToday ? "Rain today" : "Rainy day"; conditions.push("rain-heavy");
   }
   const total = { yesterday: "Total for the day.", today: "Forecast total for today.", tomorrow: "Forecast total for tomorrow." }[day];
-  const chance = wd.rainChanceMax != null && day !== "yesterday" ? ` ${wd.rainChanceMax}% chance of rain.` : "";
+  const chance = wd.rainChanceMax != null && day !== "yesterday" ? `\n${wd.rainChanceMax}% chance of rain.` : "";
   return {
     key: "rain", label: "Rain", value: formatNum(mm),
     unit: isToday ? "mm today" : "mm", level, headline,
