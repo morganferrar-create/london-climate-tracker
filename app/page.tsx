@@ -81,7 +81,7 @@ export default async function Home() {
   const panelsByDay = Object.fromEntries(
     keys.map((key) => [
       key,
-      [heatPanel(weather, key), airPanel(air, key), rainPanel(weather, key)].map((p) => ({ ...p, timeLabel: timeLabel(p, c.timezone) })),
+      [heatPanel(weather, key), rainPanel(weather, key), airPanel(air, key)].map((p) => ({ ...p, timeLabel: timeLabel(p, c.timezone) })),
     ]),
   ) as Record<DayKey, Panel[]>;
 
