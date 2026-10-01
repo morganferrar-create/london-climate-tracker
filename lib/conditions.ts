@@ -93,15 +93,24 @@ export function airPanel(a: AirReading | null, day: DayKey): Panel {
   if (snap) {
     return {
       ...shared, unit: "European air quality index",
-      detail: `Fine particles (PM2.5) ${day === "today" ? "at" : "were at"} ${formatNum(snap.pm25)} µg/m³.`,
+      detail: `Fine particles from traffic and smoke: ${particleLevel(snap.pm25)}.`,
       observedAt: snap.time, timing: "reading",
     };
   }
   return {
     ...shared, unit: "European air quality index, worst hour",
-    detail: `Fine particles (PM2.5) peaked at ${formatNum(d.peakPm25)} µg/m³.`,
+    detail: `Fine particles from traffic and smoke, at their highest: ${particleLevel(d.peakPm25)}.`,
     observedAt: d.date, timing: timingFor(day),
   };
+}
+
+// Fine particles (PM2.5) in plain words, against the World Health
+// Organization's guideline of 15 µg/m³ averaged over a day. Readings are
+// hourly, so this is a guide rather than a strict comparison.
+function particleLevel(pm25: number): string {
+  if (pm25 <= 15) return "low (well within the WHO's daily guideline)";
+  if (pm25 <= 25) return "above the WHO's daily guideline";
+  return "high (well above the WHO's daily guideline)";
 }
 
 // Rain and flood. Rain is the day's total in mm: 25+ is a heavy day, 50+ is
