@@ -155,7 +155,7 @@ export default function About() {
           <p className="md:pr-8">
             <span className="font-bold text-foreground">The percentage</span> on the home page is the share of electricity
             reaching London that comes from wind, solar, hydro and biomass. On a still evening it can be under 20%, while on a
-            windy, sunny day it can reach about 50–55%. London&apos;s figure is usually lower than Britain&apos;s, because
+            windy, sunny day it can reach about 50–55%. London&apos;s figure is usually lower than Britain&apos;s because
             much of its power arrives from elsewhere, including electricity imported from abroad (which can come from
             nuclear, hydro, wind or gas power stations), which isn&apos;t counted as renewable here.
           </p>
