@@ -137,8 +137,7 @@ export default function About() {
         <div className="mt-10 max-w-2xl text-sm text-muted">
           <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">About the air advice</h3>
           <p>
-            The number on the air panel is the{" "}
-            <span className="font-bold text-foreground">European air quality index</span>. It combines the main pollutants
+            The number on the air panel is the European Air Quality Index (AQI). It combines the main pollutants
             in the air: fine particles from traffic, wood burners and industry, and gases such as nitrogen dioxide and
             ozone. The advice under it follows the UK government&apos;s health guidance. Most people only need to take care
             when the air is poor, but people with asthma, or a heart or lung condition, can feel the effects sooner, so
