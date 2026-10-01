@@ -102,9 +102,9 @@ export function gridDay(
   const zone = zoneName(picked[0].from, timeZone);
 
   const intro = {
-    today: `The next 24 hours on ${GRID_REGION.name}'s grid. Times are ${zone}.`,
-    tomorrow: `Tomorrow on ${GRID_REGION.name}'s grid, from midnight to midnight. Times are ${zone}.`,
-    yesterday: `How yesterday went on ${GRID_REGION.name}'s grid. Times are ${zone}.`,
+    today: `The next 24 hours on ${GRID_REGION.name}'s grid.`,
+    tomorrow: `Tomorrow on ${GRID_REGION.name}'s grid, from midnight to midnight.`,
+    yesterday: `How yesterday went on ${GRID_REGION.name}'s grid.`,
   }[day];
 
   return {
