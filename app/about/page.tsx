@@ -162,7 +162,7 @@ export default function About() {
           <p className="border-t border-accent pt-4 md:border-l md:border-t-0 md:pl-8 md:pt-0">
             <span className="font-bold text-foreground">Across Great Britain</span> the grid can already run on almost
             entirely clean electricity when conditions are right. For example, in April 2026 it ran on a record 98.8% zero-carbon
-            electricity for half an hour: about two-thirds renewables and one-third nuclear. Nuclear doesn&apos;t count towards the
+            electricity for half an hour – about two-thirds renewables and one-third nuclear. Nuclear doesn&apos;t count towards the
             renewables figure, but it does make electricity cleaner, which is why &ldquo;Great time&rdquo; can appear even
             when renewables are below half. Learn more here:{" "}
             <a
