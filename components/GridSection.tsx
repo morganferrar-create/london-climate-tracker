@@ -111,7 +111,7 @@ export default function GridSection({
                 </span>
               ))}
             </div>
-            <div role="img" aria-label={grid.summary} className="flex h-32 items-end gap-px">
+            <div role="img" aria-label={grid.summary} className="flex h-40 items-end gap-px sm:h-32">
               {grid.bars.map((b, i) => (
                 <div
                   key={i}
@@ -123,17 +123,21 @@ export default function GridSection({
             </div>
             <div aria-hidden className="mt-2 flex text-xs text-muted">
               {grid.bars.map((b, i) => (
+                // Every 6 hours on phones, every 3 hours on wider screens.
                 <span key={i} className="flex-1 overflow-visible whitespace-nowrap">
-                  {i % 6 === 0 ? b.time : ""}
+                  {i % 12 === 0 ? b.time : i % 6 === 0 ? <span className="hidden sm:inline">{b.time}</span> : ""}
                 </span>
               ))}
             </div>
-            <figcaption className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
-              <span>Grams of CO₂ per kWh, every half hour ({grid.zone})</span>
-              <Key level="good" text="Great time" />
-              <Key level="moderate" text="OK time" />
-              <Key level="high" text="Better to wait" />
-              <Key level="extreme" text="Avoid if you can" />
+            <figcaption className="mt-4 text-xs text-muted">
+              <p>Grams of CO₂ per kWh, every half hour ({grid.zone})</p>
+              {/* Colour key: two by two on phones, in a row on wider screens. */}
+              <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 sm:flex sm:flex-wrap">
+                <Key level="good" text="Great time" />
+                <Key level="moderate" text="OK time" />
+                <Key level="high" text="Better to wait" />
+                <Key level="extreme" text="Avoid if you can" />
+              </div>
             </figcaption>
             </div>
           </figure>
