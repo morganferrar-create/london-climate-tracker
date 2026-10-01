@@ -56,13 +56,13 @@ export function heatPanel(w: WeatherReading | null, day: DayKey): Panel {
   const shared = { key: "heat" as const, label: "Heat", level, headline, conditions };
   if (snap) {
     const detail = day === "today"
-      ? `Feels like ${formatNum(snap.feelsLike)}°C now.\nToday's peak feels like ${formatNum(d.feelsLikeMax)}°C.`
-      : `Felt like ${formatNum(snap.feelsLike)}°C at this time.\nYesterday's peak felt like ${formatNum(d.feelsLikeMax)}°C.`;
+      ? `Feels like ${formatNum(snap.feelsLike)}°C now.\nToday's high: feels like ${formatNum(d.feelsLikeMax)}°C.`
+      : `Felt like ${formatNum(snap.feelsLike)}°C at this time.\nYesterday's high: felt like ${formatNum(d.feelsLikeMax)}°C.`;
     return { ...shared, value: formatNum(snap.temperature), unit: "°C", detail, observedAt: snap.time, timing: "reading" };
   }
   return {
     ...shared, value: formatNum(d.tempMax), unit: "°C high",
-    detail: `Highest temperature of the day.\nPeak feels like ${formatNum(d.feelsLikeMax)}°C.`,
+    detail: `Highest temperature of the day.\n${day === "tomorrow" ? "Tomorrow's high: feels" : "Yesterday's high: felt"} like ${formatNum(d.feelsLikeMax)}°C.`,
     observedAt: d.date, timing: timingFor(day),
   };
 }
