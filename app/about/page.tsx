@@ -30,21 +30,21 @@ const GUIDE: { title: string; rows: [Level, string, string][] }[] = [
     ],
   },
   {
-    title: "Air",
-    rows: [
-      ["good", "Good", "European air quality index 0–40"],
-      ["moderate", "Okay", "40–60"],
-      ["high", "Poor", "60–80"],
-      ["extreme", "Extremely poor", "Over 80"],
-    ],
-  },
-  {
     title: "Rain",
     rows: [
       ["good", "Dry", "Under 5 mm in the day"],
       ["moderate", "Rain today", "5–25 mm"],
       ["high", "Heavy rain", "25–50 mm"],
       ["extreme", "Torrential rain", "50 mm or more"],
+    ],
+  },
+  {
+    title: "Air",
+    rows: [
+      ["good", "Good", "European air quality index 0–40"],
+      ["moderate", "Okay", "40–60"],
+      ["high", "Poor", "60–80"],
+      ["extreme", "Extremely poor", "Over 80"],
     ],
   },
   {
