@@ -62,7 +62,7 @@ export function heatPanel(w: WeatherReading | null, day: DayKey): Panel {
   }
   return {
     ...shared, value: formatNum(d.tempMax), unit: "°C high",
-    detail: `Highest temperature of the day.\n${day === "tomorrow" ? "Tomorrow's high: feels" : "Yesterday's high: felt"} like ${formatNum(d.feelsLikeMax)}°C.`,
+    detail: `Highest temperature of the day.\n${day === "tomorrow" ? "Tomorrow's high: will feel" : "Yesterday's high: felt"} like ${formatNum(d.feelsLikeMax)}°C.`,
     observedAt: d.date, timing: timingFor(day),
   };
 }
