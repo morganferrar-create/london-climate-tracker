@@ -187,24 +187,25 @@ export default function About() {
         <h2 id="trust-heading" className="mb-6 text-4xl font-medium tracking-[-0.03em] sm:text-5xl">
           Can I trust the actions<span className="text-accent">?</span>
         </h2>
-        <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
-          <div>
-            <p className="text-2xl font-medium tracking-[-0.03em]">{formatDate(lastChecked, true) ?? "–"}</p>
-            <p className="mt-1 text-sm text-muted">Actions last checked</p>
-          </div>
-          <ul className="grid gap-4 text-sm sm:grid-cols-3">
-            {[
-              ["It's real", "Every action links to the official page it came from, so you can check it yourself."],
-              ["It's still running", "Closed or paused schemes are left out of the advice. They're listed just below instead."],
-              ["It's dated", "Each action shows when it was last checked, and they're all re-checked regularly."],
-            ].map(([title, body]) => (
-              <li key={title}>
-                <p className="font-bold">{title}</p>
-                <p className="mt-1 text-muted">{body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="grid gap-6 text-sm sm:grid-cols-2 lg:grid-cols-4">
+          <li>
+            <p className="font-bold">Last checked</p>
+            <p className="mt-1 text-muted">
+              Every action was checked against its official page on{" "}
+              <span className="font-bold text-foreground">{formatDate(lastChecked, true) ?? "–"}</span>.
+            </p>
+          </li>
+          {[
+            ["It's real", "Every action links to the official page it came from, so you can check it yourself."],
+            ["It's still running", "Closed or paused schemes are left out of the advice. They're listed just below instead."],
+            ["It's dated", "Each action shows when it was last checked, and they're all re-checked regularly."],
+          ].map(([title, body]) => (
+            <li key={title}>
+              <p className="font-bold">{title}</p>
+              <p className="mt-1 text-muted">{body}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section aria-labelledby="watch-heading" className="mt-16">
