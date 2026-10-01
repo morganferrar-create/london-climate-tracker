@@ -189,7 +189,7 @@ export default function About() {
         </h2>
         <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
           <div>
-            <p className="text-5xl font-medium tracking-[-0.03em]">{formatDate(lastChecked, true) ?? "–"}</p>
+            <p className="text-2xl font-medium tracking-[-0.03em]">{formatDate(lastChecked, true) ?? "–"}</p>
             <p className="mt-1 text-sm text-muted">Actions last checked</p>
           </div>
           <ul className="grid gap-4 text-sm sm:grid-cols-3">
