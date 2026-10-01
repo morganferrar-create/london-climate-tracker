@@ -92,13 +92,13 @@ export function airPanel(a: AirReading | null, day: DayKey): Panel {
   const shared = { key: "air" as const, label: "Air", value: String(i), level, headline, conditions };
   if (snap) {
     return {
-      ...shared, unit: "European AQI",
+      ...shared, unit: "European air quality index",
       detail: `Fine particles (PM2.5) ${day === "today" ? "at" : "were at"} ${formatNum(snap.pm25)} µg/m³.`,
       observedAt: snap.time, timing: "reading",
     };
   }
   return {
-    ...shared, unit: "European AQI, worst hour",
+    ...shared, unit: "European air quality index, worst hour",
     detail: `Fine particles (PM2.5) peaked at ${formatNum(d.peakPm25)} µg/m³.`,
     observedAt: d.date, timing: timingFor(day),
   };
