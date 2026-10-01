@@ -18,12 +18,6 @@ export type DayKey = keyof typeof DAY_INDEX;
 
 const DAYS_PARAMS = "&past_days=1&forecast_days=2";
 
-// The flood model splits the map into squares about 5 km wide. The square
-// over central London picks up a side stream, so we read the Thames at
-// Greenwich instead, where the model's main river runs.
-const RIVER_POINT = { latitude: 51.475, longitude: -0.025, name: "the Thames at Greenwich" };
-export const RIVER_NAME = RIVER_POINT.name;
-
 export interface WeatherDay {
   date: string; // YYYY-MM-DD, London's calendar day
   tempMax: number; // °C
@@ -55,16 +49,6 @@ export interface AirReading {
   /** The same readings at this hour yesterday, from the same model. */
   yesterday: { europeanAqi: number; pm25: number; time: string } | null;
   days: AirDay[]; // yesterday, today, tomorrow
-}
-
-export interface FloodDay {
-  date: string; // YYYY-MM-DD
-  discharge: number; // m³/s
-  dischargeMean: number; // long-term average for this date
-}
-
-export interface FloodReading {
-  days: FloodDay[]; // yesterday, today, tomorrow
 }
 
 export async function fetchWeather(city: City): Promise<WeatherReading | null> {
@@ -148,33 +132,6 @@ export async function fetchAir(city: City): Promise<AirReading | null> {
           ? { europeanAqi: Math.round(aqiThen), pm25: typeof pmThen === "number" ? pmThen : 0, time: toUtc(then, json.utc_offset_seconds) }
           : null,
       days: [...byDate.values()],
-    };
-  } catch {
-    return null;
-  }
-}
-
-/**
- * River signal from Open-Meteo's flood API (the GloFAS model). Compares
- * each day's modelled river flow with the long-term average for that date.
- */
-export async function fetchFlood(): Promise<FloodReading | null> {
-  const url =
-    `https://flood-api.open-meteo.com/v1/flood` +
-    `?latitude=${RIVER_POINT.latitude}&longitude=${RIVER_POINT.longitude}` +
-    `&daily=river_discharge,river_discharge_mean${DAYS_PARAMS}`;
-  try {
-    const res = await fetch(url, { next: { revalidate: 6 * HOUR } });
-    if (!res.ok) return null;
-    const json = await res.json();
-    const d = json.daily;
-    if (!Array.isArray(d?.time)) return null;
-    return {
-      days: d.time.map((date: string, i: number) => ({
-        date,
-        discharge: d.river_discharge[i],
-        dischargeMean: d.river_discharge_mean[i],
-      })),
     };
   } catch {
     return null;

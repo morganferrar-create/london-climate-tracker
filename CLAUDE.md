@@ -17,7 +17,7 @@ This is a Terra Studio Build 2 project, built from scratch. The reference repo i
 - `data/verified.json`: actions that passed all three checks. The only actions the site shows.
 - `data/flagged.json`: actions that failed a check, with a `flag_reason`. Shown on /about ("Worth keeping an eye on" or "Recently ended"), never as advice.
 - `lib/types.ts`: the data schema. Matches the reference repo and the research skill.
-- `lib/feeds.ts`: one function per live feed (weather incl. rain, air, flood). Each returns `null` on failure. No keys by default.
+- `lib/feeds.ts`: one function per live feed (weather incl. rain, air, electricity grid). Each returns `null` on failure. No keys by default. (The river/flood feed was removed: London floods come from heavy rain, which still switches on `flood-risk`.)
 - `lib/conditions.ts`: turns readings into levels (good/moderate/high/extreme) and conditions (`heat-high`, `air-high`, `flood-risk`...). Thresholds are documented there.
 - `app/page.tsx`: readings (yesterday/today/tomorrow), when to plug in, matched actions, all actions.
 - `app/about/page.tsx`: the About page: last-checked date, what the colours mean, the renewables explainer, sources, flagged entries. (/how-its-checked redirects here.)
@@ -45,7 +45,7 @@ The learner is new to this. Use plain words, and explain any technical term the 
 
 ## The seven steps
 1. Set up (done when the starter page shows).
-2. Live readings: London, three feeds, three panels (heat, air, rain and flood).
+2. Live readings: London, three panels (heat, air, rain).
 3. Research the actions in Cowork (learner, outside Claude Code). Placeholder with 2–3 clearly fake actions if they want to keep going first.
 4. Show the actions: "What to do today" plus all actions with category filters and search.
 5. "How it's checked" page (now called About).

@@ -7,7 +7,7 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { actionsFor, categories, lastChecked, verifiedActions } from "@/lib/actions";
 import { activeConditions, airPanel, heatPanel, rainPanel, type Panel } from "@/lib/conditions";
-import { DAY_INDEX, fetchAir, fetchFlood, fetchGrid, fetchWeather, type DayKey } from "@/lib/feeds";
+import { DAY_INDEX, fetchAir, fetchGrid, fetchWeather, type DayKey } from "@/lib/feeds";
 import { gridDay } from "@/lib/grid";
 import { CONDITION_PHRASES, clockTime, formatDate, listOf, localDate, noWidow, zoneName } from "@/lib/labels";
 import type { City } from "@/lib/types";
@@ -45,6 +45,7 @@ function whatToDo(day: DayKey, panelsByDay: Record<DayKey, Panel[]>): WhatToDo {
     active
       .filter((c) => !(c === "heat-high" && active.includes("heat-extreme")))
       .filter((c) => !(c === "air-moderate" && active.includes("air-high")))
+      .filter((c) => c !== "flood-risk")
       .map((c) => CONDITION_PHRASES[c]),
   );
   const when = basis === "tomorrow" ? "tomorrow" : "today";
@@ -68,19 +69,19 @@ function timeLabel(p: Panel, timeZone: string): string {
     return `Reading taken ${clockTime(p.observedAt, timeZone)} ${zoneName(p.observedAt, timeZone)} on ${date}`;
   }
   const date = formatDate(p.observedAt);
-  return { day: `Whole day, ${date}`, forecast: `Forecast for ${date}`, reading: `River reading for ${date}` }[p.timing];
+  return { day: `Whole day, ${date}`, forecast: `Forecast for ${date}`, reading: date ?? "" }[p.timing];
 }
 
 export default async function Home() {
   const c = city as City;
   // Ask all three feeds at once rather than one after another.
-  const [weather, air, flood, grid] = await Promise.all([fetchWeather(c), fetchAir(c), fetchFlood(), fetchGrid()]);
+  const [weather, air, grid] = await Promise.all([fetchWeather(c), fetchAir(c), fetchGrid()]);
 
   const keys = Object.keys(DAY_INDEX) as DayKey[];
   const panelsByDay = Object.fromEntries(
     keys.map((key) => [
       key,
-      [heatPanel(weather, key), airPanel(air, key), rainPanel(weather, flood, key)].map((p) => ({ ...p, timeLabel: timeLabel(p, c.timezone) })),
+      [heatPanel(weather, key), airPanel(air, key), rainPanel(weather, key)].map((p) => ({ ...p, timeLabel: timeLabel(p, c.timezone) })),
     ]),
   ) as Record<DayKey, Panel[]>;
 
@@ -98,7 +99,7 @@ export default async function Home() {
     label: DAY_LABELS[key],
     tagline: noWidow(tagline(key, c.name)),
     heading: heading(key),
-    date: formatDate(weather?.days[DAY_INDEX[key]]?.date ?? flood?.days[DAY_INDEX[key]]?.date),
+    date: formatDate(weather?.days[DAY_INDEX[key]]?.date ?? dates[key]),
     panels: panelsByDay[key],
     todo: whatToDo(key, panelsByDay),
     grid: gridDay(grid, key, dates, now, c.timezone),

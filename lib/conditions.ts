@@ -7,8 +7,8 @@
 // (the day's high, the worst hour for air).
 
 import {
-  DAY_INDEX, RIVER_NAME,
-  type AirReading, type DayKey, type FloodReading, type WeatherReading,
+  DAY_INDEX,
+  type AirReading, type DayKey, type WeatherReading,
 } from "./feeds";
 import type { Condition } from "./types";
 
@@ -130,42 +130,33 @@ function airAdvice(level: Level, day: DayKey): string {
   return advice[day][level] ?? "";
 }
 
-// Rain and flood. Rain is the day's total in mm: 25+ is a heavy day, 50+ is
-// the kind of day that floods basements and roads. The river signal
-// compares the day's flow with the normal for that date: 2× is well above
-// normal, 5× is flood territory.
-export function rainPanel(w: WeatherReading | null, f: FloodReading | null, day: DayKey): Panel {
+// Rain: the day's total in mm. 25+ is a heavy day, 50+ is torrential. London's
+// floods mostly come from heavy downpours overwhelming the drains, so a heavy
+// rain day also switches on "flood-risk" behind the scenes, which brings the
+// flood actions forward. The panel itself just talks about rain.
+export function rainPanel(w: WeatherReading | null, day: DayKey): Panel {
   const wd = w?.days[DAY_INDEX[day]];
-  const fd = f?.days[DAY_INDEX[day]];
-  if (!wd && !fd) return unavailable("rain", "Rain and flood", "Rain and river data unavailable right now.");
+  if (!w || !wd) return unavailable("rain", "Rain", "Rain forecast unavailable right now.");
   const isToday = day === "today";
-  const mm = wd?.rainMm ?? 0;
-  const ratio = fd && fd.dischargeMean > 0 ? fd.discharge / fd.dischargeMean : null;
+  const mm = wd.rainMm;
   let level: Level = "good";
   let headline = "Dry";
   const conditions: Condition[] = [];
-  if (mm >= 50 || (ratio !== null && ratio >= 5)) {
-    level = "extreme"; headline = "Torrential rain";
-    conditions.push("rain-heavy", "flood-risk");
-  } else if (mm >= 25 || (ratio !== null && ratio >= 2)) {
-    level = "high"; headline = "Heavy rain";
-    conditions.push("rain-heavy", "flood-risk");
+  if (mm >= 50) {
+    level = "extreme"; headline = "Torrential rain"; conditions.push("rain-heavy", "flood-risk");
+  } else if (mm >= 25) {
+    level = "high"; headline = "Heavy rain"; conditions.push("rain-heavy", "flood-risk");
   } else if (mm >= 5) {
     level = "moderate"; headline = isToday ? "Rain today" : "Rainy day"; conditions.push("rain-heavy");
   }
-  const total = !wd
-    ? "Rain forecast unavailable."
-    : { yesterday: "Total for the day.", today: "Forecast total for today.", tomorrow: "Forecast total for tomorrow." }[day];
-  const chance = wd?.rainChanceMax != null && day !== "yesterday" ? ` ${wd.rainChanceMax}% chance of rain.` : "";
-  const river = ratio !== null
-    ? ` River flow on ${RIVER_NAME} is ${ratio.toFixed(1)}× normal for ${isToday ? "today" : "that day"}.`
-    : " River data unavailable.";
+  const total = { yesterday: "Total for the day.", today: "Forecast total for today.", tomorrow: "Forecast total for tomorrow." }[day];
+  const chance = wd.rainChanceMax != null && day !== "yesterday" ? ` ${wd.rainChanceMax}% chance of rain.` : "";
   return {
-    key: "rain", label: "Rain and flood", value: wd ? formatNum(mm) : "–",
-    unit: wd ? (isToday ? "mm today" : "mm") : "", level, headline,
-    detail: `${total}${chance}${river}`,
+    key: "rain", label: "Rain", value: formatNum(mm),
+    unit: isToday ? "mm today" : "mm", level, headline,
+    detail: `${total}${chance}`,
     conditions,
-    observedAt: isToday ? (w?.time ?? fd?.date ?? null) : (wd?.date ?? fd?.date ?? null),
+    observedAt: isToday ? w.time : wd.date,
     timing: isToday ? "reading" : timingFor(day),
   };
 }

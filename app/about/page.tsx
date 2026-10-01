@@ -5,7 +5,6 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { flaggedActions, lastChecked } from "@/lib/actions";
 import type { Level } from "@/lib/conditions";
-import { RIVER_NAME } from "@/lib/feeds";
 import { formatDate } from "@/lib/labels";
 import type { Action, City } from "@/lib/types";
 
@@ -40,12 +39,12 @@ const GUIDE: { title: string; rows: [Level, string, string][] }[] = [
     ],
   },
   {
-    title: "Rain and flood",
+    title: "Rain",
     rows: [
       ["good", "Dry", "Under 5 mm in the day"],
       ["moderate", "Rain today", "5–25 mm"],
-      ["high", "Heavy rain", "25–50 mm, or the Thames at twice its normal flow"],
-      ["extreme", "Torrential rain", "50 mm or more, or the Thames at five times normal"],
+      ["high", "Heavy rain", "25–50 mm"],
+      ["extreme", "Torrential rain", "50 mm or more"],
     ],
   },
   {
@@ -61,7 +60,6 @@ const GUIDE: { title: string; rows: [Level, string, string][] }[] = [
 
 const SOURCES = [
   ["Heat, air and rain", "Open-Meteo", "https://open-meteo.com/", "Every hour"],
-  ["River level", `Open-Meteo flood model, reading ${RIVER_NAME}`, "https://open-meteo.com/en/docs/flood-api", "Every six hours"],
   ["Electricity", "NESO, Britain's electricity system operator", "https://carbonintensity.org.uk/", "Every half hour"],
 ];
 
