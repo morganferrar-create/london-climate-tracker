@@ -139,12 +139,11 @@ export default function About() {
         <div className="mt-10 max-w-2xl text-sm text-muted">
           <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">Fine particles</h3>
           <p>
-            The air panel also tells you about <span className="font-bold text-foreground">fine particles</span>, known as
-            PM2.5: specks of soot and dust about 30 times thinner than a human hair, mostly from traffic, brake and tyre
-            dust, wood burners and industry. They&apos;re the most harmful part of air pollution because they can get deep
-            into your lungs. The panel compares them with the World Health Organization&apos;s daily guideline of 15
-            micrograms per cubic metre: under 15 is <em>low</em>, 15–25 is <em>above the guideline</em>, and over 25 is{" "}
-            <em>high</em>.
+            The European air quality index combines several pollutants. The most harmful are{" "}
+            <span className="font-bold text-foreground">fine particles</span>, known as PM2.5: specks of soot and dust about
+            30 times thinner than a human hair, mostly from traffic, brake and tyre dust, wood burners and industry. They can
+            get deep into your lungs, which is why the advice on the air panel suggests cutting back on hard exercise
+            outdoors when the air is poor, especially near busy roads.
           </p>
         </div>
       </section>

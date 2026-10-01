@@ -93,24 +93,41 @@ export function airPanel(a: AirReading | null, day: DayKey): Panel {
   if (snap) {
     return {
       ...shared, unit: "European air quality index",
-      detail: `Fine particles from traffic and smoke: ${particleLevel(snap.pm25)}.`,
+      detail: airAdvice(level, day),
       observedAt: snap.time, timing: "reading",
     };
   }
   return {
     ...shared, unit: "European air quality index, worst hour",
-    detail: `Fine particles from traffic and smoke, at their highest: ${particleLevel(d.peakPm25)}.`,
+    detail: airAdvice(level, day),
     observedAt: d.date, timing: timingFor(day),
   };
 }
 
-// Fine particles (PM2.5) in plain words, against the World Health
-// Organization's guideline of 15 µg/m³ averaged over a day. Readings are
-// hourly, so this is a guide rather than a strict comparison.
-function particleLevel(pm25: number): string {
-  if (pm25 <= 15) return "low (well within the WHO's daily guideline)";
-  if (pm25 <= 25) return "above the WHO's daily guideline";
-  return "high (well above the WHO's daily guideline)";
+// What the air level means for you, in plain words. Follows the UK
+// government's health advice for air pollution (the Daily Air Quality Index).
+function airAdvice(level: Level, day: DayKey): string {
+  const advice: Record<DayKey, Partial<Record<Level, string>>> = {
+    today: {
+      good: "Clean air. A good day to be outside.",
+      moderate: "Fine for most people. If you have asthma, or a heart or lung condition, take it a bit easier outdoors.",
+      high: "Polluted air. Cut back on hard exercise outdoors, especially near busy roads, and more so if you have asthma or a heart or lung condition.",
+      extreme: "Very polluted air. Avoid hard exercise outdoors. If you have a heart or lung condition, stay indoors where you can.",
+    },
+    yesterday: {
+      good: "The air was clean at this time.",
+      moderate: "The air was fine for most people at this time.",
+      high: "The air was polluted at this time.",
+      extreme: "The air was very polluted at this time.",
+    },
+    tomorrow: {
+      good: "Clean air expected all day. A good day to be outside.",
+      moderate: "Expected to be fine for most people. If you have asthma, or a heart or lung condition, take it a bit easier outdoors.",
+      high: "Polluted air expected at times. Plan hard exercise outdoors for cleaner hours, especially if you have asthma or a heart or lung condition.",
+      extreme: "Very polluted air expected. Avoid hard exercise outdoors. If you have a heart or lung condition, plan to stay indoors where you can.",
+    },
+  };
+  return advice[day][level] ?? "";
 }
 
 // Rain and flood. Rain is the day's total in mm: 25+ is a heavy day, 50+ is
