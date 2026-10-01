@@ -109,10 +109,10 @@ export function airPanel(a: AirReading | null, day: DayKey): Panel {
 function airAdvice(level: Level, day: DayKey): string {
   const advice: Record<DayKey, Partial<Record<Level, string>>> = {
     today: {
-      good: "Clean air. A good day to be outside.",
-      moderate: "Fine for most people. If you have asthma, or a heart or lung condition, take it a bit easier outdoors.",
-      high: "Polluted air. Cut back on hard exercise outdoors, especially near busy roads, and more so if you have asthma or a heart or lung condition.",
-      extreme: "Very polluted air. Avoid hard exercise outdoors. If you have a heart or lung condition, stay indoors where you can.",
+      good: "Clean air.\nA good day to be outside.",
+      moderate: "Fine for most people.\nIf you have asthma, or a heart or lung condition, take it a bit easier outdoors.",
+      high: "Polluted air.\nCut back on hard exercise outdoors, especially near busy roads, and more so if you have asthma or a heart or lung condition.",
+      extreme: "Very polluted air.\nAvoid hard exercise outdoors. If you have a heart or lung condition, stay indoors where you can.",
     },
     yesterday: {
       good: "The air was clean at this time.",
@@ -121,10 +121,10 @@ function airAdvice(level: Level, day: DayKey): string {
       extreme: "The air was very polluted at this time.",
     },
     tomorrow: {
-      good: "Clean air expected all day. A good day to be outside.",
-      moderate: "Expected to be fine for most people. If you have asthma, or a heart or lung condition, take it a bit easier outdoors.",
-      high: "Polluted air expected at times. Plan hard exercise outdoors for cleaner hours, especially if you have asthma or a heart or lung condition.",
-      extreme: "Very polluted air expected. Avoid hard exercise outdoors. If you have a heart or lung condition, plan to stay indoors where you can.",
+      good: "Clean air expected all day.\nA good day to be outside.",
+      moderate: "Expected to be fine for most people.\nIf you have asthma, or a heart or lung condition, take it a bit easier outdoors.",
+      high: "Polluted air expected at times.\nPlan hard exercise outdoors for cleaner hours, especially if you have asthma or a heart or lung condition.",
+      extreme: "Very polluted air expected.\nAvoid hard exercise outdoors. If you have a heart or lung condition, plan to stay indoors where you can.",
     },
   };
   return advice[day][level] ?? "";
