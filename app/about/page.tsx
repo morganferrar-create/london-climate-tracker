@@ -138,8 +138,8 @@ export default function About() {
           <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">European Air Quality Index</h3>
           <p>
             The number on the air panel is the European Air Quality Index (AQI). It combines the main pollutants
-            in the air: fine particles from traffic, wood burners and industry, and gases such as nitrogen dioxide and
-            ozone. The advice under it follows the UK government&apos;s health guidance. Most people only need to take care
+            in the air: fine particles from traffic, wood burners and industry, and gases such as nitrogen dioxide (mostly
+            from traffic) and ozone (which forms when sunlight reacts with pollution on hot days). The advice under it follows the UK government&apos;s health guidance. Most people only need to take care
             when the air is poor, but people with asthma, or a heart or lung condition, can feel the effects sooner, so
             the advice mentions them first.
           </p>
