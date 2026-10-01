@@ -135,7 +135,7 @@ export default function About() {
         </div>
 
         <div className="mt-10 max-w-2xl text-sm text-muted">
-          <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">About the air advice</h3>
+          <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">European Air Quality Index</h3>
           <p>
             The number on the air panel is the European Air Quality Index (AQI). It combines the main pollutants
             in the air: fine particles from traffic, wood burners and industry, and gases such as nitrogen dioxide and
